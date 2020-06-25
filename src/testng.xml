@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Practice Suite">
+    <test name="Demo App V1 Tests">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="wait" value="10"/>
+        <!--<parameter name="browser" value="firefox"/>-->
+        <!--<parameter name="browser" value="edge"/>-->
+        <classes>
+            <class name="com.applitool.Tests.ElementTests"/>
+        </classes>
+    </test>
+</suite>
