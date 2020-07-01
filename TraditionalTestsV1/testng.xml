@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Practice Suite" parallel="none" >
+    <test name="Demo App V1 Tests Chrome">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="wait" value="5"/>
+        <parameter name="url" value="https://demo.applitools.com/gridHackathonV1.html"/>
+        <!--<parameter name="browser" value="edge"/>-->
+        <classes>
+            <class name="com.applitools.appv1.Tests.ElementTests"/>
+        </classes>
+    </test>
+    <test name="Demo App V1 Tests Firefox">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="wait" value="5"/>
+        <parameter name="url" value="https://demo.applitools.com/gridHackathonV1.html"/>
+        <!--<parameter name="browser" value="edge"/>-->
+        <classes>
+            <class name="com.applitools.appv1.Tests.ElementTests"/>
+        </classes>
+    </test>
+</suite>
