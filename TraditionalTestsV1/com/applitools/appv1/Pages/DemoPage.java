@@ -1,13 +1,7 @@
 package com.applitools.appv1.Pages;
 
-import com.applitools.appv1.maps.DemoMapLaptop;
 import com.applitools.appv1.maps.DemoMapMobile;
-import com.applitools.appv1.maps.DemoMapTablet;
-
-import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -17,14 +11,13 @@ import utils.Viewport;
 
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
-import static utils.BaseTest.browser;
-
-public class DemoPage {
 
 
-    DemoMapLaptop demoMapLaptop = new DemoMapLaptop(BaseTest.getDriver(browser));
-    DemoMapTablet demoMapTablet = new DemoMapTablet(BaseTest.getDriver(browser));
-    DemoMapMobile demoMapMobile = new DemoMapMobile(BaseTest.getDriver(browser));
+public class DemoPage extends DemoMapMobile {
+
+    public DemoPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void verifyElementIsDisplayed(WebElement element, boolean isDisplayed) {
         if (isDisplayed) {
@@ -63,14 +56,8 @@ public class DemoPage {
     public void waitForElementVisibility(final WebElement element, int timeoutSec) {
         System.out.println("Wait for Element");
 
-//        Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver2())
-//                .withTimeout(timeoutSec, TimeUnit.SECONDS)
-//                .pollingEvery(1,TimeUnit.SECONDS)
-//                .ignoring(NoSuchElementException.class);
-
         try {
-            WebDriverWait wait = new WebDriverWait(BaseTest.getDriver(browser), timeoutSec);
-
+            WebDriverWait wait = new WebDriverWait(driver, timeoutSec);
             wait.until(ExpectedConditions.visibilityOf(element));
         } catch (TimeoutException tme) {
             tme.getMessage();
@@ -81,15 +68,15 @@ public class DemoPage {
     public void verifySearchTextFieldIsDisplayed(Viewport viewport, boolean isDisplayed) {
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptop.searchTextfield, isDisplayed);
+                verifyElementIsDisplayed(searchTextfield, isDisplayed);
                 break;
+
             case TABLET:
-                verifyElementIsDisplayed(demoMapTablet.searchTextfield, isDisplayed);
+                verifyElementIsDisplayed(searchTextfield, isDisplayed);
                 break;
+
             case MOBILE:
-                verifyElementIsNotDisplayed(demoMapMobile.searchTextfield);
-//                click(demoMapTablet.searchTextfield,"Search text");
-//                verifyElementIsDisplayed(demoMapMobile.searchTextfield, isDisplayed);
+                verifyElementIsNotDisplayed(searchTextfield);
                 break;
         }
     }
@@ -97,13 +84,13 @@ public class DemoPage {
     public void verifyFiltersIconIsDisplayed(Viewport viewport, boolean isDisplayed) {
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptop.filterIcon, isDisplayed);
+                verifyElementIsDisplayed(filterIcon, isDisplayed);
                 break;
             case TABLET:
-                verifyElementIsDisplayed(demoMapTablet.filterIcon, isDisplayed);
+                verifyElementIsDisplayed(filterIcon, isDisplayed);
                 break;
             case MOBILE:
-                verifyElementIsDisplayed(demoMapMobile.filterIcon, isDisplayed);
+                verifyElementIsDisplayed(filterIcon, isDisplayed);
                 break;
         }
     }
@@ -111,15 +98,15 @@ public class DemoPage {
     public void verifyQuickLinksListIsDisplayed(Viewport viewport, boolean isDisplayed) {
         switch (viewport) {
             case LAPTOP:
-                for (WebElement element : demoMapLaptop.quickLinks)
+                for (WebElement element : quickLinks)
                     verifyElementIsDisplayed(element, isDisplayed);
                 break;
             case TABLET:
-                for (WebElement element : demoMapTablet.quickLinks)
+                for (WebElement element : quickLinks)
                     verifyElementIsDisplayed(element, isDisplayed);
                 break;
             case MOBILE:
-                for (WebElement element : demoMapMobile.quickLinks) {
+                for (WebElement element : quickLinks) {
                     verifyElementIsNotDisplayed(element);
                 }
                 break;
@@ -131,30 +118,30 @@ public class DemoPage {
 
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptop.applifashionIcon, isDisplayed);
+                verifyElementIsDisplayed(applifashionIcon, isDisplayed);
                 break;
             case TABLET:
-                verifyElementIsDisplayed(demoMapTablet.applifashionIcon, isDisplayed);
+                verifyElementIsDisplayed(applifashionIcon, isDisplayed);
                 break;
             case MOBILE:
-                verifyElementIsDisplayed(demoMapMobile.applifashionIcon, isDisplayed);
+                verifyElementIsDisplayed(applifashionIcon, isDisplayed);
                 break;
         }
     }
 
     public void clickOnSearchIcon(Viewport viewport) {
-        waitForElementVisibility(demoMapMobile.searchIcon, 5);
+        waitForElementVisibility(searchIcon, 5);
         switch (viewport) {
             case LAPTOP:
-                click(demoMapMobile.searchIcon, "Search Icon in Laptop");
+                click(searchIcon, "Search Icon in Laptop");
                 break;
 
             case TABLET:
-                click(demoMapMobile.searchIcon, "Search Icon in Tablet");
+                click(searchIcon, "Search Icon in Tablet");
                 break;
 
             case MOBILE:
-                click(demoMapMobile.searchIcon_, "Search Icon in Mobile");
+                click(searchIcon_, "Search Icon in Mobile");
                 break;
         }
     }
@@ -163,13 +150,13 @@ public class DemoPage {
 
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptop.wishlistIcon, isDisplayed);
+                verifyElementIsDisplayed(wishlistIcon, isDisplayed);
                 break;
             case TABLET:
-                verifyElementIsDisplayed(demoMapTablet.wishlistIcon, isDisplayed);
+                verifyElementIsDisplayed(wishlistIcon, isDisplayed);
                 break;
             case MOBILE:
-                verifyElementIsDisplayed(demoMapMobile.wishlistIcon, isDisplayed);
+                verifyElementIsDisplayed(wishlistIcon, isDisplayed);
                 break;
         }
     }
@@ -178,13 +165,13 @@ public class DemoPage {
 
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptop.itemsInCartIcon, isDisplayed);
+                verifyElementIsDisplayed(itemsInCartIcon, isDisplayed);
                 break;
             case TABLET:
-                verifyElementIsDisplayed(demoMapTablet.itemsInCartIcon, isDisplayed);
+                verifyElementIsDisplayed(itemsInCartIcon, isDisplayed);
                 break;
             case MOBILE:
-                verifyElementIsDisplayed(demoMapMobile.itemsInCartIcon, isDisplayed);
+                verifyElementIsDisplayed(itemsInCartIcon, isDisplayed);
                 break;
         }
     }
@@ -193,13 +180,13 @@ public class DemoPage {
 
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptop.listViewIcon, isDisplayed);
+                verifyElementIsDisplayed(listViewIcon, isDisplayed);
                 break;
             case TABLET:
-                verifyElementIsDisplayed(demoMapTablet.listViewIcon, isDisplayed);
+                verifyElementIsDisplayed(listViewIcon, isDisplayed);
                 break;
             case MOBILE:
-                verifyElementIsDisplayed(demoMapMobile.listViewIcon, isDisplayed);
+                verifyElementIsDisplayed(listViewIcon, isDisplayed);
                 break;
         }
     }

@@ -10,9 +10,9 @@ public class ElementTests extends BaseTest {
     DemoPage demoPage;
     DemoUtils demoUtils = new DemoUtils();
 
-    //@Test(dataProvider = "viewPort")
-    public void verifyFilterIconIsNotDisplayed(Viewport viewport) {
-        demoPage = new DemoPage();
+    @Test(dataProvider = "viewPort")
+    public void verifyFilterIcon(Viewport viewport) {
+        demoPage = new DemoPage(getDriver());
 
         demoUtils.setViewPort(viewport);
         switch (viewport) {
@@ -30,9 +30,9 @@ public class ElementTests extends BaseTest {
         }
     }
 
-    //@Test(dataProvider = "viewPort")
-    public void verifySearchTextFieldIsDisplayed(Viewport viewport) {
-        demoPage = new DemoPage();
+    @Test(dataProvider = "viewPort")
+    public void verifySearchTextField(Viewport viewport) {
+        demoPage = new DemoPage(getDriver());
 
         demoUtils.setViewPort(viewport);
         switch (viewport) {
@@ -50,9 +50,9 @@ public class ElementTests extends BaseTest {
         }
     }
 
-    //@Test(dataProvider = "viewPort")
-    public void verifyAllLinksUnderQuickLinksFooterIsDisplayed(Viewport viewport) {
-        demoPage = new DemoPage();
+    @Test(dataProvider = "viewPort")
+    public void verifyAllLinksUnderQuickLinksFooter(Viewport viewport) {
+        demoPage = new DemoPage(getDriver());
 
         demoUtils.setViewPort(viewport);
         switch (viewport) {
@@ -70,9 +70,9 @@ public class ElementTests extends BaseTest {
         }
     }
 
-    //@Test(dataProvider = "viewPort")
-    public void verifyApplifashionIconIsDisplayed(Viewport viewport) {
-        demoPage = new DemoPage();
+    @Test(dataProvider = "viewPort")
+    public void verifyApplifashionIcon(Viewport viewport) {
+        demoPage = new DemoPage(getDriver());
 
         demoUtils.setViewPort(viewport);
         switch (viewport) {
@@ -90,9 +90,9 @@ public class ElementTests extends BaseTest {
         }
     }
 
-    //@Test(dataProvider = "viewPort")
-    public void verifyWishListIconIsDisplayed(Viewport viewport) {
-        demoPage = new DemoPage();
+    @Test(dataProvider = "viewPort")
+    public void verifyWishListIcon(Viewport viewport) {
+        demoPage = new DemoPage(getDriver());
 
         demoUtils.setViewPort(viewport);
         switch (viewport) {
@@ -110,9 +110,9 @@ public class ElementTests extends BaseTest {
         }
     }
 
-    //@Test(dataProvider = "viewPort")
-    public void verifyItemsInCartIconIsDisplayed(Viewport viewport) {
-        demoPage = new DemoPage();
+    @Test(dataProvider = "viewPort")
+    public void verifyItemsInCartIcon(Viewport viewport) {
+        demoPage = new DemoPage(getDriver());
 
         demoUtils.setViewPort(viewport);
         switch (viewport) {
@@ -131,8 +131,8 @@ public class ElementTests extends BaseTest {
     }
 
     @Test(dataProvider = "viewPort")
-    public void verifyListViewIconIsDisplayed(Viewport viewport) {
-        demoPage = new DemoPage();
+    public void verifyListViewIcon(Viewport viewport) {
+        demoPage = new DemoPage(getDriver());
 
         demoUtils.setViewPort(viewport);
         switch (viewport) {

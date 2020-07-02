@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class DemoMapMobileV2 {
-    WebDriver driver;
+    public WebDriver driver;
 
     public DemoMapMobileV2(WebDriver driver) {
         this.driver = driver;

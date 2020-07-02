@@ -1,81 +1,96 @@
 package utils;
 
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
+import static utils.Browser.*;
+
 
 public class BaseTest {
 
-    private static WebDriver driver = null;
-    public static String browser;
+    private static WebDriver driver;
 
-
-    public static WebDriver getDriver(String browser) {
-        BaseTest.browser = browser;
-        if ("CHROME".equals(browser.toUpperCase())) {
-            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_mac");
-            setDriver(browser);
-            return driver;
-        } else if ("FIREFOX".equals(browser.toUpperCase())) {
-            System.setProperty("webdriver.gecko.driver", "drivers/geckodriver_mac");
-            setDriver(browser);
-            return driver;
-        } else if ("EDGE".equals(browser.toUpperCase())) {
-            System.setProperty("webdriver.gecko.driver", "drivers/geckodriver_mac");
-            setDriver(browser);
-            return driver;
-        } else return null;
-
+    public static WebDriver getDriver() {
+        return driver;
     }
 
-    public static void setDriver(String browser) {
-        if ("CHROME".equals(browser.toUpperCase())) {
-            try {
-                if (driver.equals(null))
+    public void setDriver(Browser browser) throws Exception {
+        switch (browser) {
+            case CHROME:
+                try {
+                    if (driver.equals(null) | driver.toString().contains("firefox") | driver.toString().contains("edge")) {
+                        setProperty(CHROME);
+                        driver = new ChromeDriver();
+                    }
+                } catch (NullPointerException npe) {
+                    setProperty(CHROME);
                     driver = new ChromeDriver();
-            } catch (NullPointerException npe) {
-                driver = new ChromeDriver();
-            }
-        } else if ("FIREFOX".equals(browser.toUpperCase())) {
-            try {
-                if (driver.equals(null))
+                }
+                break;
+
+            case FIREFOX:
+                try {
+                    if (driver.equals(null) | driver.toString().contains("chrome") | driver.toString().contains("edge")) {
+                        setProperty(FIREFOX);
+                        driver = new FirefoxDriver();
+                    }
+                } catch (NullPointerException npe) {
+                    setProperty(FIREFOX);
                     driver = new FirefoxDriver();
-            } catch (NullPointerException npe) {
-                driver = new FirefoxDriver();
-            }
-        } else if ("EDGE".equals(browser.toUpperCase())) {
-            try {
-                if (driver.equals(null))
-                    driver = new FirefoxDriver();
-            } catch (NullPointerException npe) {
-                driver = new ChromeDriver();
-            }
+                }
+                break;
+
+            case EDGE:
+                try {
+                    if (driver.equals(null) | driver.toString().contains("chrome") | driver.toString().contains("firefox")) {
+                        setProperty(EDGE);
+                        driver = new EdgeDriver();
+                    }
+                } catch (NullPointerException npe) {
+                    setProperty(EDGE);
+                    driver = new EdgeDriver();
+                }
+                break;
         }
     }
 
-    @BeforeTest()
-    @Parameters({"url", "browser"})
-    public void setup( String url, String browser) {
-        this.browser = browser;
-        try {
-            getDriver(browser).manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-            getDriver(browser).get(url);
-        } catch (Exception exz) {
+    public void setProperty(Browser browser) throws Exception {
+        switch (browser) {
+            case CHROME:
+                System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_mac");
+                break;
 
+            case FIREFOX:
+                System.setProperty("webdriver.gecko.driver", "drivers/geckodriver_mac");
+                break;
+
+            case EDGE:
+                System.setProperty("webdriver.edge.driver", "drivers/msedgedriver_mac");
+                break;
+
+            default:
+                throw new Exception("Invalid browser");
         }
     }
 
-    @AfterSuite
+    @BeforeMethod
+    @Parameters({"url", "browser", "wait"})
+    public void setup(String url, String browser, String wait) throws Exception {
+        setDriver(Browser.valueOf(browser.toUpperCase()));
+        driver.manage().timeouts().implicitlyWait(Integer.parseInt(wait), TimeUnit.SECONDS);
+        driver.get(url);
+    }
+
+    @AfterMethod
     public void teardown() {
-        try {
-            getDriver(browser).quit();
-        } catch (Exception ex) {
-
-        }
+        driver.quit();
+        driver = null;
     }
 
     @DataProvider

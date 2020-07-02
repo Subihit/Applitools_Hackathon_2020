@@ -8,11 +8,12 @@ import utils.Viewport;
 
 public class ElementTestsV2 extends BaseTest {
 
-    DemoPageV2 demoPageV2 = new DemoPageV2();
+    DemoPageV2 demoPageV2 ;
     DemoUtils demoUtilsV2 = new DemoUtils();
 
     @Test(dataProvider = "viewPort")
     public void verifyFilterIconIsNotDisplayed(Viewport viewport) {
+        demoPageV2 = new DemoPageV2(getDriver());
         demoUtilsV2.setViewPort(viewport);
 
         switch (viewport) {
@@ -32,6 +33,7 @@ public class ElementTestsV2 extends BaseTest {
 
     @Test(dataProvider = "viewPort")
     public void verifySearchTextFieldIsDisplayed(Viewport viewport) {
+        demoPageV2 = new DemoPageV2(getDriver());
         demoUtilsV2.setViewPort(viewport);
         switch (viewport) {
             case LAPTOP:
@@ -50,6 +52,7 @@ public class ElementTestsV2 extends BaseTest {
 
     @Test(dataProvider = "viewPort")
     public void verifyAllLinksUnderQuickLinksFooterIsDisplayed(Viewport viewport) {
+        demoPageV2 = new DemoPageV2(getDriver());
         demoUtilsV2.setViewPort(viewport);
         switch (viewport) {
             case LAPTOP:
@@ -68,6 +71,7 @@ public class ElementTestsV2 extends BaseTest {
 
     @Test(dataProvider = "viewPort")
     public void verifyApplifashionIconIsDisplayed(Viewport viewport) {
+        demoPageV2 = new DemoPageV2(getDriver());
         demoUtilsV2.setViewPort(viewport);
         switch (viewport) {
             case LAPTOP:
@@ -86,6 +90,7 @@ public class ElementTestsV2 extends BaseTest {
 
     @Test(dataProvider = "viewPort")
     public void verifyWishListIconIsDisplayed(Viewport viewport) {
+        demoPageV2 = new DemoPageV2(getDriver());
         demoUtilsV2.setViewPort(viewport);
         switch (viewport) {
             case LAPTOP:
@@ -104,6 +109,7 @@ public class ElementTestsV2 extends BaseTest {
 
     @Test(dataProvider = "viewPort")
     public void verifyItemsInCartIconIsDisplayed(Viewport viewport) {
+        demoPageV2 = new DemoPageV2(getDriver());
         demoUtilsV2.setViewPort(viewport);
         switch (viewport) {
             case LAPTOP:
@@ -123,6 +129,7 @@ public class ElementTestsV2 extends BaseTest {
     @Test(dataProvider = "viewPort", dataProviderClass = BaseTest.class)
     public void verifyListViewIconIsDisplayed(Viewport viewport) {
         demoUtilsV2.setViewPort(viewport);
+        demoPageV2 = new DemoPageV2(getDriver());
         switch (viewport) {
             case LAPTOP:
                 demoPageV2.verifyListViewIconIsDisplayed(viewport, true);

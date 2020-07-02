@@ -3,10 +3,7 @@ package com.applitools.appv2.Pages;
 import com.applitools.appv2.maps.DemoMapLaptopV2;
 import com.applitools.appv2.maps.DemoMapMobileV2;
 import com.applitools.appv2.maps.DemoMapTabletV2;
-import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -15,14 +12,13 @@ import utils.Viewport;
 
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
-import static utils.BaseTest.browser;
-import static utils.BaseTest.getDriver;
 
-public class DemoPageV2 {
+public class DemoPageV2 extends DemoMapMobileV2 {
 
-    DemoMapLaptopV2 demoMapLaptopV2 = new DemoMapLaptopV2(getDriver(browser));
-    DemoMapTabletV2 demoMapTabletV2 = new DemoMapTabletV2(getDriver(browser));
-    DemoMapMobileV2 demoMapMobileV2 = new DemoMapMobileV2(getDriver(browser));
+    public DemoPageV2(WebDriver driver) {
+        super(driver);
+    }
+
 
     public void verifyElementIsDisplayed(WebElement element, boolean isDisplayed) {
         if (isDisplayed) {
@@ -67,7 +63,7 @@ public class DemoPageV2 {
 //                .ignoring(NoSuchElementException.class);
 
         try {
-            WebDriverWait wait = new WebDriverWait(getDriver(browser), timeoutSec);
+            WebDriverWait wait = new WebDriverWait(driver, timeoutSec);
 
             wait.until(ExpectedConditions.visibilityOf(element));
         } catch (TimeoutException tme) {
@@ -79,15 +75,15 @@ public class DemoPageV2 {
     public void verifySearchTextFieldIsDisplayed(Viewport viewport, boolean isDisplayed) {
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptopV2.searchTextfield, isDisplayed);
+                verifyElementIsDisplayed(searchTextfield, isDisplayed);
                 break;
             case TABLET:
-                verifyElementIsDisplayed(demoMapTabletV2.searchTextfield, isDisplayed);
+                verifyElementIsDisplayed(searchTextfield, isDisplayed);
                 break;
             case MOBILE:
-                verifyElementIsNotDisplayed(demoMapMobileV2.searchTextfield);
-//                click(demoMapTabletV2.searchTextfield,"Search text");
-//                verifyElementIsDisplayed(demoMapMobileV2.searchTextfield, isDisplayed);
+                verifyElementIsNotDisplayed(searchTextfield);
+//                click(searchTextfield,"Search text");
+//                verifyElementIsDisplayed(searchTextfield, isDisplayed);
                 break;
         }
     }
@@ -95,13 +91,13 @@ public class DemoPageV2 {
     public void verifyFiltersIconIsDisplayed(Viewport viewport, boolean isDisplayed) {
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptopV2.filterIcon, isDisplayed);
+                verifyElementIsDisplayed(filterIcon, isDisplayed);
                 break;
             case TABLET:
-                verifyElementIsDisplayed(demoMapTabletV2.filterIcon, isDisplayed);
+                verifyElementIsDisplayed(filterIcon, isDisplayed);
                 break;
             case MOBILE:
-                verifyElementIsDisplayed(demoMapMobileV2.filterIcon, isDisplayed);
+                verifyElementIsDisplayed(filterIcon, isDisplayed);
                 break;
         }
     }
@@ -109,15 +105,15 @@ public class DemoPageV2 {
     public void verifyQuickLinksListIsDisplayed(Viewport viewport, boolean isDisplayed) {
         switch (viewport) {
             case LAPTOP:
-                for (WebElement element : demoMapLaptopV2.quickLinks)
+                for (WebElement element : quickLinks)
                     verifyElementIsDisplayed(element, isDisplayed);
                 break;
             case TABLET:
-                for (WebElement element : demoMapTabletV2.quickLinks)
+                for (WebElement element : quickLinks)
                     verifyElementIsDisplayed(element, isDisplayed);
                 break;
             case MOBILE:
-                for (WebElement element : demoMapMobileV2.quickLinks) {
+                for (WebElement element : quickLinks) {
                     verifyElementIsNotDisplayed(element);
                 }
                 break;
@@ -129,30 +125,30 @@ public class DemoPageV2 {
 
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptopV2.applifashionIcon, isDisplayed);
+                verifyElementIsDisplayed(applifashionIcon, isDisplayed);
                 break;
             case TABLET:
-                verifyElementIsDisplayed(demoMapTabletV2.applifashionIcon, isDisplayed);
+                verifyElementIsDisplayed(applifashionIcon, isDisplayed);
                 break;
             case MOBILE:
-                verifyElementIsDisplayed(demoMapMobileV2.applifashionIcon, isDisplayed);
+                verifyElementIsDisplayed(applifashionIcon, isDisplayed);
                 break;
         }
     }
 
     public void clickOnSearchIcon(Viewport viewport) {
-        waitForElementVisibility(demoMapMobileV2.searchIcon, 5);
+        waitForElementVisibility(searchIcon, 5);
         switch (viewport) {
             case LAPTOP:
-                click(demoMapMobileV2.searchIcon, "Search Icon in Laptop");
+                click(searchIcon, "Search Icon in Laptop");
                 break;
 
             case TABLET:
-                click(demoMapMobileV2.searchIcon, "Search Icon in Tablet");
+                click(searchIcon, "Search Icon in Tablet");
                 break;
 
             case MOBILE:
-                click(demoMapMobileV2.searchIcon_, "Search Icon in Mobile");
+                click(searchIcon_, "Search Icon in Mobile");
                 break;
         }
     }
@@ -161,13 +157,13 @@ public class DemoPageV2 {
 
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptopV2.wishlistIcon, isDisplayed);
+                verifyElementIsDisplayed(wishlistIcon, isDisplayed);
                 break;
             case TABLET:
-                verifyElementIsDisplayed(demoMapTabletV2.wishlistIcon, isDisplayed);
+                verifyElementIsDisplayed(wishlistIcon, isDisplayed);
                 break;
             case MOBILE:
-                verifyElementIsDisplayed(demoMapMobileV2.wishlistIcon, isDisplayed);
+                verifyElementIsDisplayed(wishlistIcon, isDisplayed);
                 break;
         }
     }
@@ -176,13 +172,13 @@ public class DemoPageV2 {
 
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptopV2.itemsInCartIcon, isDisplayed);
+                verifyElementIsDisplayed(itemsInCartIcon, isDisplayed);
                 break;
             case TABLET:
-                verifyElementIsDisplayed(demoMapTabletV2.itemsInCartIcon, isDisplayed);
+                verifyElementIsDisplayed(itemsInCartIcon, isDisplayed);
                 break;
             case MOBILE:
-                verifyElementIsDisplayed(demoMapMobileV2.itemsInCartIcon, isDisplayed);
+                verifyElementIsDisplayed(itemsInCartIcon, isDisplayed);
                 break;
         }
     }
@@ -191,13 +187,13 @@ public class DemoPageV2 {
 
         switch (viewport) {
             case LAPTOP:
-                verifyElementIsDisplayed(demoMapLaptopV2.listViewIcon, isDisplayed);
+                verifyElementIsDisplayed(listViewIcon, isDisplayed);
                 break;
             case TABLET:
-                verifyElementIsDisplayed(demoMapTabletV2.listViewIcon, isDisplayed);
+                verifyElementIsDisplayed(listViewIcon, isDisplayed);
                 break;
             case MOBILE:
-                verifyElementIsDisplayed(demoMapMobileV2.listViewIcon, isDisplayed);
+                verifyElementIsDisplayed(listViewIcon, isDisplayed);
                 break;
         }
     }
