@@ -6,10 +6,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class ApplitoolsV1MapMobile extends ApplitoolsV1MapTablet {
 
-    public ApplitoolsV1MapMobile(WebDriver driver) {
-        super(driver);
-    }
-
+//    public ApplitoolsV1MapMobile(WebDriver driver) {
+//        super(driver);
+//    }
     /**
      * Mobile locators go here
      */

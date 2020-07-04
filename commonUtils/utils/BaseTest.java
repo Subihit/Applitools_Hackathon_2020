@@ -19,20 +19,33 @@ public class BaseTest {
     private static WebDriver driver;
     public static String viewport;
     public static String device;
-    private Browser browser;
+    private static Browser browser;
     private static String locator;
+    private static String url;
 
     public static void setLocator(String locator) {
         BaseTest.locator = locator;
     }
 
-    public static WebDriver getDriver() {
-        return driver;
+
+    public static WebDriver getDriver() { return driver; }
+
+    @Parameters("browser")
+    @BeforeSuite
+    public static void setBrowser(String browser) {
+        BaseTest.browser = Browser.valueOf(browser.toUpperCase());
     }
 
-    public void setDriver(Browser browser) throws Exception {
-        this.browser = browser;
-        switch (browser) {
+    @Parameters("url")
+    @BeforeSuite
+    public static void setURL(String url) {
+        BaseTest.url = url;
+        System.out.println("URL - " + url);
+    }
+
+    @Parameters({"browser"})
+    public static void setDriver(String browser) throws Exception {
+        switch (Browser.valueOf(browser.toUpperCase())) {
             case CHROME:
                 try {
                     if (driver.equals(null) | !(driver.toString().contains("chrome"))) {
@@ -71,7 +84,7 @@ public class BaseTest {
         }
     }
 
-    public void setProperty(Browser browser) throws Exception {
+    public static void setProperty(Browser browser) throws Exception {
         switch (browser) {
             case CHROME:
                 System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_mac");
@@ -90,33 +103,39 @@ public class BaseTest {
         }
     }
 
+
+    public void setImplicitWait(int wait) {
+        driver.manage().timeouts().implicitlyWait(wait, TimeUnit.SECONDS);
+    }
+
+
+    public void navigateToURL() {
+        driver.get(url);
+    }
+
     @BeforeTest
-    @Parameters({"url", "browser", "wait"})
-    public void setupTest(String url, String browser, String wait) throws Exception {
-        if (!browser.toUpperCase().equals(EDGE.name())) {
-            setDriver(Browser.valueOf(browser.toUpperCase()));
-            driver.manage().timeouts().implicitlyWait(Integer.parseInt(wait), TimeUnit.SECONDS);
-            driver.get(url);
-            System.out.println("Browser - " + browser);
-            System.out.println("URL - " + url);
+    @Parameters({"wait"})
+    public void setupTest(String wait) throws Exception {
+        if (!browser.equals(EDGE)) {
+            setDriver(browser.name());
+            setImplicitWait(Integer.parseInt(wait));
+            navigateToURL();
         }
     }
 
     @BeforeMethod
-    @Parameters({"url", "browser", "wait"})
-    public void setup(String url, String browser, String wait) throws Exception {
-        if (browser.toUpperCase().equals(EDGE.name())) {
-            setDriver(Browser.valueOf(browser.toUpperCase()));
-            driver.manage().timeouts().implicitlyWait(Integer.parseInt(wait), TimeUnit.SECONDS);
-            driver.get(url);
-            System.out.println("Browser - " + browser);
-            System.out.println("URL - " + url);
+    @Parameters({"wait"})
+    public void setup(String wait) throws Exception {
+        if (browser.equals(EDGE)) {
+            setDriver(browser.name());
+            setImplicitWait(Integer.parseInt(wait));
+            navigateToURL();
         }
     }
 
     @AfterMethod
     public void teardown(ITestResult testResult, ITestContext testContext, Method method) {
-        if (browser.name().toUpperCase().equals(EDGE.name())) {
+        if (browser.equals(EDGE)) {
             driver.quit();
             driver = null;
         }
@@ -130,9 +149,9 @@ public class BaseTest {
 
     @AfterTest
     public void teardownTest() {
-        if (!(browser.name().toUpperCase().equals(EDGE.name()))) {
+        if (!(browser.equals(EDGE))) {
             driver.quit();
-            driver = null;
+            //driver = null;
         }
     }
 
@@ -140,6 +159,5 @@ public class BaseTest {
     public Object[] viewPort() {
         return Viewport.values();
     }
-
 
 }

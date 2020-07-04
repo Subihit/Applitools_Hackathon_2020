@@ -1,5 +1,6 @@
 package com.applitools.appv1.maps;
 
+import com.applitools.appv1.Pages.ApplitoolsV1PageLaptop;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,9 +10,9 @@ import java.util.List;
 
 public class ApplitoolsV1MapLaptop {
 
-    public ApplitoolsV1MapLaptop(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
+//    public ApplitoolsV1MapLaptop(WebDriver driver) {
+//        PageFactory.initElements(driver, this);
+//    }
 
     /**
      * Laptop locators go here
@@ -61,4 +62,13 @@ public class ApplitoolsV1MapLaptop {
 
     @FindBy(css = "#SPAN____209")
     public WebElement filtersText;
+
+    @FindBy(css = "#UL____102>li")
+    public List<WebElement> colorFilterOptions;
+
+    @FindBy(css = "#filterBtn")
+    public WebElement filterButton;
+
+    @FindBy(css = "#product_grid>div")
+    public List<WebElement> products;
 }
