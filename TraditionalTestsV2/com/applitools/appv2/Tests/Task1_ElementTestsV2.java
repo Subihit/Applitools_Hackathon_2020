@@ -1,127 +1,132 @@
 package com.applitools.appv2.Tests;
 
-import com.applitools.appv2.Pages.DemoPageV2;
+import com.applitools.appv2.Pages.ApplitoolsV2Page;
 import org.testng.annotations.Test;
 import utils.BaseTest;
 import utils.DemoUtils;
 import utils.Viewport;
 
-public class ElementTestsV2 extends BaseTest {
+public class Task1_ElementTestsV2 extends BaseTest {
 
-    DemoPageV2 demoPageV2 ;
+    ApplitoolsV2Page applitoolsV2Page;
     DemoUtils demoUtilsV2 = new DemoUtils();
 
     @Test(dataProvider = "viewPort")
     public void verifyFilterIconIsNotDisplayed(Viewport viewport) {
-        demoPageV2 = new DemoPageV2(getDriver());
+        applitoolsV2Page = new ApplitoolsV2Page(getDriver());
         demoUtilsV2.setViewPort(viewport);
 
         switch (viewport) {
             case LAPTOP:
-                demoPageV2.verifyFiltersIconIsDisplayed(viewport, false);
+                applitoolsV2Page.verifyFiltersIconIsDisplayed(viewport, false);
                 break;
 
             case TABLET:
-                demoPageV2.verifyFiltersIconIsDisplayed(viewport, true);
+                applitoolsV2Page.verifyFiltersIconIsDisplayed(viewport, true);
                 break;
 
             case MOBILE:
-                demoPageV2.verifyFiltersIconIsDisplayed(viewport, true);
+                applitoolsV2Page.verifyFiltersIconIsDisplayed(viewport, true);
                 break;
         }
     }
 
     @Test(dataProvider = "viewPort")
     public void verifySearchTextFieldIsDisplayed(Viewport viewport) {
-        demoPageV2 = new DemoPageV2(getDriver());
+        applitoolsV2Page = new ApplitoolsV2Page(getDriver());
         demoUtilsV2.setViewPort(viewport);
+
         switch (viewport) {
             case LAPTOP:
-                demoPageV2.verifySearchTextFieldIsDisplayed(viewport, true);
+                applitoolsV2Page.verifySearchTextFieldIsDisplayed(viewport, true);
                 break;
 
             case TABLET:
-                demoPageV2.verifySearchTextFieldIsDisplayed(viewport, true);
+                applitoolsV2Page.verifySearchTextFieldIsDisplayed(viewport, true);
                 break;
 
             case MOBILE:
-                demoPageV2.verifySearchTextFieldIsDisplayed(viewport, false);
+                applitoolsV2Page.verifySearchTextFieldIsDisplayed(viewport, false);
                 break;
         }
     }
 
     @Test(dataProvider = "viewPort")
     public void verifyAllLinksUnderQuickLinksFooterIsDisplayed(Viewport viewport) {
-        demoPageV2 = new DemoPageV2(getDriver());
+        applitoolsV2Page = new ApplitoolsV2Page(getDriver());
         demoUtilsV2.setViewPort(viewport);
+
         switch (viewport) {
             case LAPTOP:
-                demoPageV2.verifyQuickLinksListIsDisplayed(viewport, true);
+                applitoolsV2Page.verifyQuickLinksListIsDisplayed(viewport, true);
                 break;
 
             case TABLET:
-                demoPageV2.verifyQuickLinksListIsDisplayed(viewport, true);
+                applitoolsV2Page.verifyQuickLinksListIsDisplayed(viewport, true);
                 break;
 
             case MOBILE:
-                demoPageV2.verifyQuickLinksListIsDisplayed(viewport, true);
+                applitoolsV2Page.verifyQuickLinksListIsDisplayed(viewport, true);
                 break;
         }
     }
 
     @Test(dataProvider = "viewPort")
     public void verifyApplifashionIconIsDisplayed(Viewport viewport) {
-        demoPageV2 = new DemoPageV2(getDriver());
+        applitoolsV2Page = new ApplitoolsV2Page(getDriver());
         demoUtilsV2.setViewPort(viewport);
+
         switch (viewport) {
             case LAPTOP:
-                demoPageV2.verifyApplifashionIconIsDisplayed(viewport, true);
+                applitoolsV2Page.verifyApplifashionIconIsDisplayed(viewport, true);
                 break;
 
             case TABLET:
-                demoPageV2.verifyApplifashionIconIsDisplayed(viewport, true);
+                applitoolsV2Page.verifyApplifashionIconIsDisplayed(viewport, true);
                 break;
 
             case MOBILE:
-                demoPageV2.verifyApplifashionIconIsDisplayed(viewport, true);
+                applitoolsV2Page.verifyApplifashionIconIsDisplayed(viewport, true);
                 break;
         }
     }
 
     @Test(dataProvider = "viewPort")
     public void verifyWishListIconIsDisplayed(Viewport viewport) {
-        demoPageV2 = new DemoPageV2(getDriver());
+        applitoolsV2Page = new ApplitoolsV2Page(getDriver());
         demoUtilsV2.setViewPort(viewport);
+
         switch (viewport) {
             case LAPTOP:
-                demoPageV2.verifyWishListIconIsDisplayed(viewport, true);
+                applitoolsV2Page.verifyWishListIconIsDisplayed(viewport, true);
                 break;
 
             case TABLET:
-                demoPageV2.verifyWishListIconIsDisplayed(viewport, false);
+                applitoolsV2Page.verifyWishListIconIsDisplayed(viewport, false);
                 break;
 
             case MOBILE:
-                demoPageV2.verifyWishListIconIsDisplayed(viewport, false);
+                applitoolsV2Page.verifyWishListIconIsDisplayed(viewport, false);
                 break;
         }
     }
 
     @Test(dataProvider = "viewPort")
     public void verifyItemsInCartIconIsDisplayed(Viewport viewport) {
-        demoPageV2 = new DemoPageV2(getDriver());
+        applitoolsV2Page = new ApplitoolsV2Page(getDriver());
         demoUtilsV2.setViewPort(viewport);
+
         switch (viewport) {
             case LAPTOP:
-                demoPageV2.verifyItemsInCartIconIsDisplayed(viewport, true);
+                applitoolsV2Page.verifyItemsInCartIconIsDisplayed(viewport, true);
                 break;
 
             case TABLET:
-                demoPageV2.verifyItemsInCartIconIsDisplayed(viewport, false);
+                applitoolsV2Page.verifyItemsInCartIconIsDisplayed(viewport, false);
                 break;
 
             case MOBILE:
-                demoPageV2.verifyItemsInCartIconIsDisplayed(viewport, false);
+                applitoolsV2Page.verifyItemsInCartIconIsDisplayed(viewport, false);
                 break;
         }
     }
@@ -129,18 +134,19 @@ public class ElementTestsV2 extends BaseTest {
     @Test(dataProvider = "viewPort", dataProviderClass = BaseTest.class)
     public void verifyListViewIconIsDisplayed(Viewport viewport) {
         demoUtilsV2.setViewPort(viewport);
-        demoPageV2 = new DemoPageV2(getDriver());
+        applitoolsV2Page = new ApplitoolsV2Page(getDriver());
+
         switch (viewport) {
             case LAPTOP:
-                demoPageV2.verifyListViewIconIsDisplayed(viewport, true);
+                applitoolsV2Page.verifyListViewIconIsDisplayed(viewport, true);
                 break;
 
             case TABLET:
-                demoPageV2.verifyListViewIconIsDisplayed(viewport, false);
+                applitoolsV2Page.verifyListViewIconIsDisplayed(viewport, false);
                 break;
 
             case MOBILE:
-                demoPageV2.verifyListViewIconIsDisplayed(viewport, false);
+                applitoolsV2Page.verifyListViewIconIsDisplayed(viewport, false);
                 break;
         }
     }

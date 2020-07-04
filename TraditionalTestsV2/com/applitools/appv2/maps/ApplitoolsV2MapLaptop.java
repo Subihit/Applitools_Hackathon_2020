@@ -1,18 +1,15 @@
-package com.applitools.appv1.maps;
+package com.applitools.appv2.maps;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class DemoMapLaptop {
-    WebDriver driver;
+public class ApplitoolsV2MapLaptop {
 
-    public DemoMapLaptop(WebDriver driver) {
-        this.driver = driver;
+    public ApplitoolsV2MapLaptop(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
@@ -31,7 +28,7 @@ public class DemoMapLaptop {
     @FindBy(css = "#I__tiviewgrid__203")
     public WebElement gridViewIcon;
 
-    @FindBy(css = "#I__tiviewlist__204")
+    @FindBy(css = "#I__tiviewlist__205")
     public WebElement listViewIcon;
 
     @FindBy(css = "#I__tiheart__2505")

@@ -1,4 +1,4 @@
-package com.applitools.appv2.maps;
+package com.applitools.appv1.maps;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,14 +7,15 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class DemoMapTabletV2 {
+public class ApplitoolsV1MapLaptop {
 
-    WebDriver driver;
-
-    public DemoMapTabletV2(WebDriver driver) {
-        this.driver = driver;
+    public ApplitoolsV1MapLaptop(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
+
+    /**
+     * Laptop locators go here
+     */
 
     @FindBy(css = "#INPUTtext____42")
     public WebElement searchTextfield;
@@ -31,7 +32,7 @@ public class DemoMapTabletV2 {
     @FindBy(css = "#I__tiviewgrid__203")
     public WebElement gridViewIcon;
 
-    @FindBy(css = "#A____204")
+    @FindBy(css = "#I__tiviewlist__204")
     public WebElement listViewIcon;
 
     @FindBy(css = "#I__tiheart__2505")
@@ -42,6 +43,9 @@ public class DemoMapTabletV2 {
 
     @FindBy(css = ".ti-shopping-cart")
     public List<WebElement> addToCartIcon;
+
+    @FindBy(css = "#STRONG____50")
+    public WebElement itemsInCartIcon;
 
     @FindBy(css = "#collapse_1>ul>li")
     public List<WebElement> quickLinks;
@@ -57,7 +61,4 @@ public class DemoMapTabletV2 {
 
     @FindBy(css = "#SPAN____209")
     public WebElement filtersText;
-
-    @FindBy(css = "#STRONG____50")
-    public WebElement itemsInCartIcon;
 }

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Test">
-    <test name="Demo App V2 Tests Chrome">
+    <test name="Applitools Hacakathon App V2 Tests Chrome">
         <parameter name="browser" value="chrome"/>
         <parameter name="wait" value="5"/>
         <parameter name="url" value="https://demo.applitools.com/gridHackathonV2.html"/>
         <classes>
-            <class name="com.applitools.appv2.Tests.ElementTestsV2"/>
+            <class name="com.applitools.appv2.Tests.Task1_ElementTestsV2"/>
         </classes>
     </test>
-    <test name="Demo App V2 Tests Firefox">
+    <test name="Applitools Hacakathon App V2 Tests Firefox">
         <parameter name="browser" value="firefox"/>
         <parameter name="wait" value="5"/>
         <parameter name="url" value="https://demo.applitools.com/gridHackathonV2.html"/>
         <classes>
-            <class name="com.applitools.appv2.Tests.ElementTestsV2"/>
+            <class name="com.applitools.appv2.Tests.Task1_ElementTestsV2"/>
         </classes>
     </test>
-    <test name="Demo App V2 Tests Edge">
+    <test name="Applitools Hacakathon App V2 Tests Edge">
         <parameter name="browser" value="edge"/>
         <parameter name="wait" value="5"/>
         <parameter name="url" value="https://demo.applitools.com/gridHackathonV2.html"/>
         <classes>
-            <class name="com.applitools.appv2.Tests.ElementTestsV2"/>
+            <class name="com.applitools.appv2.Tests.Task1_ElementTestsV2"/>
         </classes>
     </test>
 </suite>
