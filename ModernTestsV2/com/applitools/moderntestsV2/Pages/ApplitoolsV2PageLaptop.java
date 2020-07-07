@@ -99,16 +99,7 @@ public class ApplitoolsV2PageLaptop extends BasePage {
 
     public void clickOnFilterIcon() {
         waitForElementVisibility(v1MapLaptop.filterIcon, 5);
-        while (true) {
-            try {
-                click(v1MapLaptop.filterIcon, "Filter icon in Laptop");
-                continue;
-            } catch (ElementClickInterceptedException ex) {
-                break;
-            }
-
-        }
-        setLocator(v1MapLaptop.filterIcon.toString().split("tor: ")[1].replace("]", ""));
+        click(v1MapLaptop.filterIcon, "Filter icon in Laptop");
     }
 
     public WebElement getFilterIcon() {

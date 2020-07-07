@@ -46,18 +46,27 @@ public class BaseTestTraditional extends BaseTest {
             driver = null;
         }
 
-        if (testContext.getName().contains("V1"))
-            generateHackathonReport("Traditional-V1-TestResults.txt", 1, method.getName(), locator,
-                    viewport, browser.name(), device, testResult.isSuccess());
-        else generateHackathonReport("Traditional-V2-TestResults.txt", 1, method.getName(), locator,
-                viewport, browser.name(), device, testResult.isSuccess());
+        if (testContext.getName().contains("V1")) {
+            if (method.getName().contains("Product"))
+                generateHackathonReport("Traditional-V1-TestResults.txt", 2, method.getName(), locator,
+                        viewport, browser.name(), device, testResult.isSuccess());
+            else
+                generateHackathonReport("Traditional-V1-TestResults.txt", 1, method.getName(), locator,
+                        viewport, browser.name(), device, testResult.isSuccess());
+        } else {
+            if (method.getName().contains("Task2"))
+                generateHackathonReport("Traditional-V2-TestResults.txt", 2, method.getName(), locator,
+                        viewport, browser.name(), device, testResult.isSuccess());
+            else
+                generateHackathonReport("Traditional-V2-TestResults.txt", 1, method.getName(), locator,
+                        viewport, browser.name(), device, testResult.isSuccess());
+        }
     }
 
     @AfterTest
     public void teardownTest() {
         if (!(browser.equals(EDGE))) {
             driver.quit();
-            //driver = null;
         }
     }
 

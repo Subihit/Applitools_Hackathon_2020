@@ -1,15 +1,14 @@
-package com.applitools.appv1.Tests;
+package com.applitools.appv2.Tests;
 
 import com.applitools.appv1.Pages.ApplitoolsV1PageLaptop;
 import com.applitools.appv1.Pages.ApplitoolsV1PageMobile;
 import com.applitools.appv1.Pages.ApplitoolsV1PageTablet;
 import org.testng.annotations.Test;
-import utils.BaseTest;
 import utils.BaseTestTraditional;
 import utils.DemoUtils;
 import utils.Viewport;
 
-public class Task2_ShoppingExperienceTestsV1 extends BaseTestTraditional {
+public class Task2_ShoppingExperienceTestsV2 extends BaseTestTraditional {
 
     ApplitoolsV1PageLaptop applitoolsV1PageLaptop;
     ApplitoolsV1PageTablet applitoolsV1PageTablet;

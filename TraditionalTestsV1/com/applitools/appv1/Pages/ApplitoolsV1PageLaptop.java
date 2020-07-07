@@ -1,6 +1,7 @@
 package com.applitools.appv1.Pages;
 
 import com.applitools.appv1.maps.ApplitoolsV1MapLaptop;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -13,7 +14,7 @@ import static utils.BaseTest.setLocator;
 
 public class ApplitoolsV1PageLaptop extends BasePage {
 
-    ApplitoolsV1MapLaptop v1MapLaptop ;
+    ApplitoolsV1MapLaptop v1MapLaptop;
 
     public ApplitoolsV1PageLaptop(WebDriver driver) {
         super(driver);
@@ -65,6 +66,7 @@ public class ApplitoolsV1PageLaptop extends BasePage {
     }
 
     public void clickOnFilterIcon() {
+        driver.navigate().refresh();
         waitForElementVisibility(v1MapLaptop.filterIcon, 5);
         click(v1MapLaptop.filterIcon, "Filter icon in Laptop");
         setLocator(v1MapLaptop.filterIcon.toString().split("tor: ")[1].replace("]", ""));

@@ -6,15 +6,12 @@ import com.applitools.appv1.Pages.ApplitoolsV1PageTablet;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.BaseTest;
-import utils.BaseTestModern;
-import utils.DemoUtils;
-import utils.Viewport;
+import utils.*;
 
 import static utils.BaseTest.getDriver;
 
 
-public class Task1_ElementTestsV1 extends BaseTest {
+public class Task1_ElementTestsV1 extends BaseTestTraditional {
 
     ApplitoolsV1PageLaptop applitoolsV1PageLaptop ;
     ApplitoolsV1PageTablet applitoolsV1PageTablet ;
@@ -79,7 +76,7 @@ public class Task1_ElementTestsV1 extends BaseTest {
                 break;
 
             case MOBILE:
-                applitoolsV1PageMobile.verifyQuickLinksListIsDisplayed(true);
+                applitoolsV1PageMobile.verifyQuickLinksListIsDisplayed(false);
                 break;
         }
     }
