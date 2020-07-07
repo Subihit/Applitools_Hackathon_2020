@@ -52,6 +52,7 @@ public class BasePage {
 
     public void click(WebElement element, String elementName) {
         System.out.println("Click on " + elementName);
+        waitForElementVisibility(element, 5);
         element.click();
     }
 

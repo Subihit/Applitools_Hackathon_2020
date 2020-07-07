@@ -1,6 +1,5 @@
-package com.applitools.appv1.maps;
+package com.applitools.moderntestsV2.maps;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

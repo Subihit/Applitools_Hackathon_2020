@@ -1,6 +1,6 @@
-package com.applitools.appv1.Pages;
+package com.applitools.moderntestsV2.Pages;
 
-import com.applitools.appv1.maps.ApplitoolsV1MapTablet;
+import com.applitools.moderntestsV2.maps.ApplitoolsV1MapTablet;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 

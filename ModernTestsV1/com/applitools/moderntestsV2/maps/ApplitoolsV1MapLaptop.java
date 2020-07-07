@@ -1,10 +1,7 @@
-package com.applitools.appv1.maps;
+package com.applitools.moderntestsV2.maps;
 
-import com.applitools.appv1.Pages.ApplitoolsV1PageLaptop;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 

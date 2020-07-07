@@ -3,10 +3,11 @@ package com.applitools.appv2.Tests;
 import com.applitools.appv2.Pages.ApplitoolsV2PageLaptop;
 import org.testng.annotations.Test;
 import utils.BaseTest;
+import utils.BaseTestTraditional;
 import utils.DemoUtils;
 import utils.Viewport;
 
-public class Task1_ElementTestsV2 extends BaseTest {
+public class Task1_ElementTestsV2 extends BaseTestTraditional {
 
     ApplitoolsV2PageLaptop applitoolsV2PageLaptop;
     DemoUtils demoUtilsV2 = new DemoUtils();
@@ -131,7 +132,7 @@ public class Task1_ElementTestsV2 extends BaseTest {
         }
     }
 
-    @Test(dataProvider = "viewPort", dataProviderClass = BaseTest.class)
+    @Test(dataProvider = "viewPort")
     public void verifyListViewIconIsDisplayed(Viewport viewport) {
         demoUtilsV2.setViewPort(viewport);
         applitoolsV2PageLaptop = new ApplitoolsV2PageLaptop(getDriver());

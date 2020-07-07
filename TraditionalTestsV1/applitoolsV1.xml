@@ -7,7 +7,7 @@
     <test name="Applitools Hacakathon App V1 Tests Chrome">
         <classes>
             <class name="com.applitools.appv1.Tests.Task1_ElementTestsV1"/>
-            <!--<class name="com.applitools.appv1.Tests.Task2_ShoppingExperienceTestsV1"/>-->
+            <!--<class name="com.applitools.Task2_ShoppingExperienceTestsV1"/>-->
         </classes>
     </test>
     <!--<test name="Applitools Hacakathon App V1 Tests Firefox">-->
@@ -15,7 +15,7 @@
         <!--<parameter name="wait" value="5"/>-->
         <!--<parameter name="url" value="https://demo.applitools.com/gridHackathonV1.html"/>-->
         <!--<classes>-->
-            <!--<class name="com.applitools.appv1.Tests.Task1_ElementTestsV1"/>-->
+            <!--<class name="com.applitools.Task1_ElementTestsV1"/>-->
         <!--</classes>-->
     <!--</test>-->
     <!--<test name="Applitools Hacakathon App V1 Tests Edge Chromium">-->
@@ -23,7 +23,7 @@
         <!--<parameter name="wait" value="5"/>-->
         <!--<parameter name="url" value="https://demo.applitools.com/gridHackathonV1.html"/>-->
         <!--<classes>-->
-            <!--<class name="com.applitools.appv1.Tests.Task1_ElementTestsV1"/>-->
+            <!--<class name="com.applitools.Task1_ElementTestsV1"/>-->
         <!--</classes>-->
     <!--</test>-->
 </suite>

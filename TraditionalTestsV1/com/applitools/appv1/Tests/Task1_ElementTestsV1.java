@@ -3,11 +3,15 @@ package com.applitools.appv1.Tests;
 import com.applitools.appv1.Pages.ApplitoolsV1PageLaptop;
 import com.applitools.appv1.Pages.ApplitoolsV1PageMobile;
 import com.applitools.appv1.Pages.ApplitoolsV1PageTablet;
+import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.BaseTest;
+import utils.BaseTestModern;
 import utils.DemoUtils;
 import utils.Viewport;
+
+import static utils.BaseTest.getDriver;
 
 
 public class Task1_ElementTestsV1 extends BaseTest {

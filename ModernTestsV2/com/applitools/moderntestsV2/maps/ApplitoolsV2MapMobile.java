@@ -1,10 +1,9 @@
-package com.applitools.appv1.maps;
+package com.applitools.moderntestsV2.maps;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ApplitoolsV1MapMobile extends ApplitoolsV1MapTablet {
+public class ApplitoolsV2MapMobile extends ApplitoolsV2MapTablet {
 
     /**
      * Mobile locators go here
